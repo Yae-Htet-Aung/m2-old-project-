@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<div>
+    <div>
+        <div>
+            <h2> Expense details </h2>
+        </div>
+        <div>
+            <ul>
+                <li><b>Name: </b> {{ expense.name }} </li>
+                <li><b>Date: </b> {{ expense.date }} </li>
+                <li><b>Category: </b> {{ expense.category }} </li>
+                <li><b>Description: </b> {{ expense.description }} </li>
+                <li><b>Reason: </b> {{ expense.reason }} </li>
+
+                <li><b>Claimed Amount: </b> {{ expense.claimed_amount }} </li>
+                <li><b>Approved Amount: </b> {{ expense.approved_amount }} </li>
+                <li><b>Currency: </b> {{ expense.currency }} </li>
+                <li><b>Payment Name: </b> {{ expense.payment_name }} </li>
+                <li><b>Payment Description: </b> {{ expense.payment_description }} </li>
+
+                <li><b>Payment Date: </b> {{ expense.payment_date }} </li>
+                <li><b>Claimed Date: </b> {{ expense.claimed_date }} </li>
+                <li><b>Approval Date: </b> {{ expense.approval_date }} </li>
+                <li><b>Status: </b> {{ expense.status }} </li>
+                
+                <li><b>Comments: </b> {{ expense.comments }} </li>
+                <li><b>note: </b> {{ expense.note }} </li>
+                <li>
+                    <b>Receipt Image: {{ expense.receipt_image }}</b> <br/>
+                    {% if expense.receipt_image %}
+                    <img src="{{ expense.receipt_image.url }}" width="100px">
+                    <a href="{{ expense.receipt_image.url }}" download>Download Image</a>
+                    {% else %}
+                    <p style="color: red;">No Receipt Uploaded!</p>
+                    {% endif %}
+                </li>
+                
+            </ul>              
+        </div>
+        <a href="javascript:history.back()"> Back </a>
+
+    </div>    
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+	<div>
+		<div>
+			<div>
+				<h2> Department Details </h2>
+			</div>
+			<div>
+				<ul>
+					<li> <b>Department Name: </b> {{ form.name }} </li>
+					<li> <b>Description: </b> {{ form.description }} </li>
+					<li> <b>Total No. of Employees: </b> {{ form.total_employees }} </li>
+					<li> <b>Established Date: </b> {{ form.created_date }} </li>
+					<li> <b>Updated Date: </b> {{ form.updated_date }} </li>
+					<li> <b>Status: </b> {{ form.status }} </li>
+					<li> <b>Is Active: </b> {{ form.is_active }} </li>
+					<li> <b>Ongoing Project Name: </b> {{ form.project_name }} </li>
+					<li> <b>Project Deadline: </b> {{ form.deadline }} </li>
+					<li> <b>Address: </b> {{ form.address }} </li>
+					<li> <b>City: </b> {{ form.city }} </li>
+					<li> <b>State: </b> {{ form.state }} </li>
+					<li> <b>Postal Code: </b> {{ form.postal_code }} </li>
+					<li> <b>Phone: </b> {{ form.phone }} </li>
+					<li> <b>Email: </b> {{ form.email }} </li>
+					<li> <b>Budget: </b> {{ form.budget }} </li>
+					<li> <b>Custom Field: </b> {{ form.custom_field }} </li>
+				</ul>
+			</div>
+			<a href="javascript:history.back()"> Back </a>
+		</div>
+	</div>
+{% endblock %}

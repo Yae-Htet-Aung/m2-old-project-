@@ -1,0 +1,33 @@
+! hr_employee
+model: Employee
+view: list, detail, add, update, delete
+urls: 
+    path('list/', views.list),
+    path('add/', views.add),
+    path('detail/<int:employee_id>/', views.detail),
+    path('update/<int:employee_id>/', views.update),
+    path('delete/<int:employee_id>/', views.delete)
+
+templates: employee_add _detail _list _update
+
+! foreign keys
+hr_employee - department, contract
+hr_contract - department, job
+
+! migrations 
+hr_job > hr_department > hr_contract > hr_employee
+
+
+department = models.CharField(max_length=50, verbose_name='Department')
+designation = models.CharField(max_length=50, verbose_name='Designation')
+contract_type = models.CharField(max_length=20, default='Permanent')
+
+
+CONTRACT NOTES 
+<td>
+    {% if contract.attachment == 'default' %} 
+        <img src="./CircleDefault.jpg" class="listImg">
+    {% else %}
+        <img src="{{ contract.attachment.url }}" class="listImg">
+    {% endif %}
+</td>

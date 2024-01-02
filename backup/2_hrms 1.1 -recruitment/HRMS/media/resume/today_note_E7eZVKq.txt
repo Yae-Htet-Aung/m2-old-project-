@@ -1,0 +1,8 @@
+python manage.py runserver 0.0.0.0:8000
+
+cmd> 
+ipconfig > IPv4 Address 192.168.247.223
+run in browser> 192.168.247.223:8000
+
+django settings.py mhar ALLOWED_HOSTS> add ipv4 addrs
+ALLOWED_HOSTS = ["192.168.247.223"]

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<div>
+    <h1> Create Expense </h1>
+    <form method="POST" action="{% url 'expense_add' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div>
+            <input type="submit" value="Create">
+            <a href="javascript:history.back()"> Back </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

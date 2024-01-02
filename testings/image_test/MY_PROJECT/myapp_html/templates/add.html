@@ -1,0 +1,28 @@
+<!-- myapp/templates/myapp/add_person.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add</title>
+</head>
+
+<body>
+    <h2>Add Person</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" required />
+        </div>
+        <div>
+            <label for="image">Image:</label>
+            <input type="file" name="image" accept="image/*" required />
+        </div>
+        
+        <input type="submit" value="Add">
+    </form>
+    <a href="{% url 'retrieve_persons' %}">Back to Home</a>
+</body>
+
+</html>

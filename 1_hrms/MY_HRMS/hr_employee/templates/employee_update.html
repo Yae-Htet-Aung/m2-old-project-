@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<div>
+    <h3> Edit Employee </h3>
+    <form method="POST" action="/employee/update/{{employee.id}}/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <label> Employee ID </label>
+            <input type="text" name="employee_id" value="{{employee.employee_id}}" required />
+        </div>
+
+        <div>
+            <label> First Name </label>
+            <input type="text" name="first_name" value="{{employee.first_name}}" required />
+        </div>
+
+        <div>
+            <label> Last Name </label>
+            <input type="text" name="last_name" value="{{employee.last_name}}" required />
+        </div>
+
+        <div>
+            <label> Email </label>
+            <input type="text" name="email" value="{{employee.email}}" required />
+        </div>
+
+        <div>
+            <label> Phone </label>
+            <input type="text" name="phone_number" value="{{employee.phone_number}}" required />
+        </div>
+
+        <!-- <div>
+            <label> Department </label>
+            <input type="text" name="department" value="{{employee.department}}" required />
+        </div> -->
+
+        <!-- <div>
+            <label> Designation </label>
+            <input type="text" name="designation" value="{{employee.designation}}" required />
+        </div> -->
+
+        <div>
+            <label> Employment Status </label>
+            <input type="checkbox" name="employment_status" {% if employee.employment_status %} checked {% endif %} />
+        </div>
+
+        <!-- <div>
+            <label> Salary </label>
+            <input type="number" name="salary" value="{{employee.salary}}" required />
+        </div> -->
+
+        <div>
+            <label> Bank Account </label>
+            <input type="text" name="bank_account" value="{{employee.bank_account}}" required />
+        </div>
+
+        <div>
+            <label> Bank Name </label>
+            <input type="text" name="bank_name" value="{{employee.bank_name}}" required />
+        </div>
+
+        <div>
+            <label> Joining Date </label>
+            <input type="date" name="joining_date" value="{{employee.joining_date}}" required />
+        </div>
+
+        <div>
+            <label> Contract Type </label>
+            <select name="contract_type">
+                <option value="Part Time" {% if employee.contract_type == 'Part Time' %} selected {% endif %}>Part Time</option>
+                <option value="Temporary" {% if employee.contract_type == 'Temporary' %} selected {% endif %}>Temporary</option>
+                <option value="Internship" {% if employee.contract_type == 'Internship' %} selected {% endif %}>Internship</option>
+                <option value="Permanent" {% if employee.contract_type == 'Permanent' %} selected {% endif %}>Permanent</option>
+            </select>
+        </div>
+
+        <div>
+            <label> ID Number </label>
+            <input type="text" name="identity_number" value="{{employee.identity_number}}" required />
+        </div>
+
+        <div>
+            <label> Address </label>
+            <input type='text' name='address' value="{{employee.address}}" required />
+        </div>
+
+        <div>
+            <label> Marital Status </label>
+            <select name="marital_status">
+                <option value="Single" {% if employee.gender == 'Single' %} selected {% endif %}>Single</option>
+                <option value="Divorced" {% if employee.gender == 'Divorced' %} selected {% endif %}>Divorced</option>
+                <option value="Separated" {% if employee.gender == 'Separated' %} selected {% endif %}>Separated</option>
+                <option value="Widowed" {% if employee.gender == 'Widowed' %} selected {% endif %}>Widowed</option>
+            </select>
+        </div>
+
+        <div>
+            <label> Date of Birth </label>
+            <input type='date' name='date_of_birth' value="{{employee.date_of_birth}}" required />
+        </div>
+
+        <div>
+            <label> Age </label>
+            <input type='number' name='age' value="{{employee.age}}" required />
+        </div>
+
+        <div>
+            <label>Gender</label>
+            <select name="gender">
+                <option value="Male" {% if employee.gender == 'Male' %} selected {% endif %}> Male </option>
+                <option value="Female" {% if employee.gender == 'Female' %} selected {% endif %}> Female </option>
+                <option value="Others" {% if employee.gender == 'Others' %} selected {% endif %}> Others </option>
+            </select>
+        </div>
+
+        <div>
+            <label> Citizen </label>
+            <input type='text' name='citizen' value="{{employee.citizen}}" required />
+        </div>
+
+        {% if employee.picture %}
+        <div>Previous Uploaded Picture: <a href="{{picture_url}}">{{employee.picture}}</a></div>
+        {% endif %}
+
+        <div>
+            <label> Picture </label>
+            <input type="file" name="picture" value="{{employee.picture}}" />
+        </div>
+
+        <div>
+            <input type="submit" value="Update">
+            <a href="javascript:history.back()"> Back </a>
+        </div>
+    </form>
+</div>
+{% endblock %}

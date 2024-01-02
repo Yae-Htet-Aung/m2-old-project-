@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %} Employees {% endblock %}
+{% block body_block %}
+{% load static %}
+
+<style>
+    .listImg {
+        width: 80px;
+        height: 80px;
+    }
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+</style>
+<div>
+    <div>
+        <h3> Employees </h3>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <!-- # first_name last_name employee_id department email phone_number  -->
+                <th>Options</th>
+                <th>No.</th>
+                <th>Picture.</th>
+                <th>Name</th>
+                <th>Employee ID</th>
+                <!-- <th>Department</th> -->
+                <!-- <th>Designation</th> -->
+                <th>Email</th>
+                <th>Phone No.</th>
+                <th>Joining Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>
+                    <a href="/employee/detail/{{employee.id}}/">
+                        <img src="{% static 'info_ico.png' %}" class="icon"/>
+                    </a>
+                    <a href="/employee/delete/{{employee.id}}/">
+                        <img src="{% static 'del_ico.png' %}" class="icon"/>
+                    </a>
+                    <a href="/employee/update/{{employee.id}}/">
+                        <img src="{% static 'edit_ico.png' %}" class="icon"/>
+                    </a>
+                </td>
+                <td>{{ forloop.counter }}</td>
+                <td><img src="{{employee.picture.url}}" class="listImg"></td>
+                <td>{{ employee.first_name }} {{ employee.last_name }}</td>
+                <td>{{ employee.employee_id }}</td>
+                <!-- department -->
+                <!-- designation -->
+                <td>{{ employee.email }}</td>
+                <td>{{ employee.phone_number }}</td>
+                <td>{{ employee.joining_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body_block %}
+<!-- style="background-image: url(); width: 100px; height: 100px; background-size: contain; background-repeat: no-repeat;" -->

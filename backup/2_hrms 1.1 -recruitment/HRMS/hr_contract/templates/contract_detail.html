@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %} 
+<style>
+    .listImg {
+        width: 150px;
+        height: 150px;
+    }
+</style>
+
+<div>
+    <div>
+        <h3>Contract&apos;s Details</h3>
+    </div>
+    <div>
+        <span><b>Attachment:</b></span><br/>        
+        <img src="{{ contract.attachment.url }}" class="listImg">
+                
+        <ol>
+            <li><b>Contract ID: </b>{{ contract.contract_id }}</li>
+            <li><b>Contract Name: </b>{{ contract.contract_name }}</li>
+            <li><b>Start Date: </b>{{ contract.start_date }}</li>
+            <li><b>End Date: </b>{{ contract.end_date }}</li>
+            <!-- department
+             job_title -->
+            <li><b>Contract Type: </b>{{ contract.contract_type }}</li>
+
+            {% if contract.contract_type == 'Contractor' %}
+                <li><b>Contractor Name: </b>{{ contract.contractor_name }}</li>
+            {% endif %}
+
+            {% if contract.contract_type == 'Sub-contractor' %}
+                <li><b>Sub-contractor Name: </b>{{ contract.sub_contractor_name }}</li>
+            {% endif %}
+
+            {% if contract.contract_type == 'Employee' or contract.contract_type == 'Freelance' %}
+                <li><b>Basic Salary: </b>{{ contract.basic_salary }}</li>
+                <li><b>Salary: </b>{{ contract.salary }}</li>
+                <li><b>Allowed_annual_leave: </b>{{ contract.allowed_annual_leave }}</li>
+            {% endif %}
+
+            {% if contract.contract_type == 'Contractor' or contract.contract_type == 'Sub-contractor' %}
+                <li><b>Contract Value: </b>{{ contract.value }}</li>
+            {% endif %}
+
+            <li><b>Status: </b>{{ contract.status }}</li>
+
+            {% if contract.status == 'Terminated' %}
+                <li><b>Terminated Date: </b>{{ contract.terminated_date }}</li>
+                <li><b>Terminated Reason: </b>{{ contract.terminated_reason }}</li>
+            {% endif %}
+
+            <li><b>Note: </b>{{ contract.note }}</li>
+            <li><b>Created Date: </b>{{ contract.created_date }}</li>
+            <li><b>Updated Date: </b>{{ contract.updated_date }}</li>
+        </ol>
+    </div>
+    <a href="javascript:history.back()"> Back </a>
+</div>
+{% endblock %}

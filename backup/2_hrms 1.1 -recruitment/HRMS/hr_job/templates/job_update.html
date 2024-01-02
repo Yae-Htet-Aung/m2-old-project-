@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %} Jobs {% endblock %}
+{% block body_block %}
+<div>
+	<h1> Update Job </h1>
+	<form method="POST" action="/job/update/{{form.instance.id}}/" enctype="multipart/form-data">
+		{% csrf_token %}
+		
+		{{ form.as_p }}
+		<div>
+			<input type="submit" value="Update">
+			<a href="javascript:history.back()"> Back </a>
+		</div>
+	</form>
+</div>
+{% endblock body_block %}

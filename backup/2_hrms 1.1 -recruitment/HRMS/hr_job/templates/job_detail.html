@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+	<div>
+		<div>
+			<div>
+				<h2> Job Details </h2>
+			</div>
+			<div>
+				<ul>
+					<li> <b>Job title: </b> {{ job.title }} </li>
+					<li> <b>Job Description: </b> {{ job.description }} </li>
+					<li> <b>Responsibilities: </b> {{ job.responsibilities }} </li>
+					<li> <b>Requirements: </b> {{ job.requirements }} </li>
+					<li> <b>Employment Type: </b> {{ job.employment_type }} </li>
+					<li> <b>Location: </b> {{ job.location }} </li>
+					<li> <b>Salary: </b> {{ job.salary }} </li>
+					<li> <b>Published Date: </b> {{ job.published_date }} </li>
+					<li> <b>Application Deadline: </b> {{ job.application_deadline }} </li>
+					<li> <b>Is Job Active: </b> {{ job.is_active }} </li>
+
+					<li> <b>Company Name: </b> {{ job.company_name }} </li>
+					<li> <b>Company Description: </b> {{ job.company_description }} </li>
+					<li> <b>Company Website: </b> {{ job.company_website }} </li>
+					<li> <b>Contact Name: </b> {{ job.contact_name }} </li>
+					<li> <b>Contact Email: </b> {{ job.contact_email }} </li>
+					<li> <b>Contact Phone: </b> {{ job.contact_phone }} </li>
+					<li> <b>Benefits: </b> {{ job.benefits }} </li>
+					<li> <b>Additional Information: </b> {{ job.additional_information }} </li>
+				</ul>
+			</div>
+			<a href="javascript:history.back()"> Back </a>
+		</div>
+	</div>
+{% endblock %}

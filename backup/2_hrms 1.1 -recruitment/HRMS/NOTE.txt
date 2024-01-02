@@ -1,0 +1,23 @@
+# return f"{self.applicant.username}'s Application for {self.job_position.title}"
+
+# many-many
+# department = models.CharField(max_length=100)
+
+# foreign key
+# applicant = models.ForeignKey(Employee, on_delete=models.CASCADE)
+# attachment = models.ImageField(verbose_name='Attachment', default='default', blank=True, upload_to='resume/')
+# job_position = models.ForeignKey(Job, on_delete=models.CASCADE)
+
+
+def form_valid(self, form):
+# Retrieve the uploaded file from the form
+# Replace with your file field name
+uploaded_file = form.cleaned_data['resume']
+
+# Perform any operations with the uploaded file
+# For example, you can save it to a different location, rename it, etc.
+# Here, we'll just print the file name
+print("Uploaded File:", uploaded_file)
+
+# Call the parent class's form_valid method to save the form
+return super().form_valid(form)

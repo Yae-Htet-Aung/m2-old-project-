@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<div>
+    <h2> Do you want to delete resume ? </h2>
+    <h4> Details </h4>
+    <div>
+        <ul>
+            <li><b>Name: </b> {{ resume.name }} </li>
+            <li><b>Submitted Date: </b> {{ resume.submission_date }} </li>
+            <li><b>Sequence: </b> {{ resume.sequence }} </li>
+            <li><b>Appointment Date: </b> {{ resume.appointment_date }} </li>
+            <li><b>Interview Date: </b> {{ resume.interview_date }} </li>
+            <li><b>Interview Location: </b> {{ resume.interview_location }} </li>
+            <li><b>Interview Feedback: </b> {{ resume.interview_feedback }} </li>
+            <li><b>Assessment score: </b> {{ resume.assessment_score }} </li>
+            <li><b>Assessment Feedback: </b> {{ resume.assessment_feedback }} </li>
+            <li><b>Status: </b> {{ resume.status }} </li>
+            <li><b>Note: </b> {{ resume.note }} </li>
+            <li><b>Is Active: </b> {{ resume.is_active }} </li>
+            <li><b>Created Date: </b> {{ resume.created_date }} </li>
+            <li><b>Offer Extended: </b> {{ resume.offer_extended }} </li>
+            <li><b>Offer Accepted: </b> {{ resume.offer_accepted }} </li>
+            <li><b>Offer Salary: </b> {{ resume.offer_salary }} </li>
+            <li><b>Offer Benefits: </b> {{ resume.offer_benefits }} </li>
+        
+            <li>
+                <b>Resume: </b>
+        
+                {% if resume.resume.url %}
+                {% with resume.resume.url as resume_url %}
+                {% if resume_url|yesno:"yes,no" == "yes" %}
+        
+                {% with resume_url|slice:"-4:" as resume_extension %}
+        
+                <p style="display: inline-block;">{{ resume.resume }}</p>
+                <a href="{{ resume.resume.url }}" download>Download File</a>
+        
+                {% ifequal resume_extension ".jpg" %}
+                </br><img src="{{ resume.resume.url }}" alt="{{ resume.title }}" width="100">
+                {% endifequal %}
+        
+                {% ifequal resume_extension ".png" %}
+                </br><img src="{{ resume.resume.url }}" alt="{{ resume.title }}" width="100">
+                {% endifequal %}
+        
+                {% ifequal resume_extension ".pdf" %}
+                </br><iframe src="{{ resume.resume.url }}" width="600" height="400"></iframe>
+                {% endifequal %}
+        
+                {% ifequal resume_extension ".txt" %}
+                <p>*<span style="color: red;">Uploaded file is not supported!</span> Please download the file to see.</p>
+                {% endifequal %}
+        
+                {% endwith %}
+        
+                {% endif %}
+                {% endwith %}
+                {% else %}
+                <p>No resume available.</p>
+                {% endif %}
+            </li>
+        
+        
+        </ul>
+    </div>
+
+    <form method="POST" action="{% url 'resume_delete' pk=resume.id %}">
+        {% csrf_token %}
+        <a href="javascript:history.back()"> Back </a>
+        <input type="submit" value="Delete">
+    </form>
+</div>
+{% endblock %}

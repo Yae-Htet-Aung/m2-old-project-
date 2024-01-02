@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} All Jobs {% endblock %}
+{% block body_block %}
+{% load static %}
+<style>
+    .icon {
+        height: 20px;
+        width: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+</style>
+<div>
+    <div>
+        <h2> Jobs </h2>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Options</th>
+                <th>No.</th>
+                <th>Title</th>
+                <th>Responsibilities</th>
+                <th>Requirements</th>
+                <th>Employment Type</th>
+                <th>Salary</th>
+                <th>Published Date</th>
+                <th>Benefits</th>
+                <th>Is Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs %}
+            <tr>
+                <td>
+                    <a href="/job/detail/{{job.id}}/">
+                        <img src="{% static 'info_ico.png' %}" class="icon"/>
+                    </a>
+                    <a href="/job/delete/{{job.id}}/">
+                        <img src="{% static 'del_ico.png' %}" class="icon"/>
+                    </a>
+                    <a href="/job/update/{{job.id}}/">
+                        <img src="{% static 'edit_ico.png' %}" class="icon"/>
+                    </a>
+                </td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ job.title }}</td>
+                <td>{{ job.responsibilities }}</td>
+                <td>{{ job.requirements }}</td>
+                <td>{{ job.employment_type }}</td>
+                <td>{{ job.salary }}</td>
+                <td>{{ job.published_date }}</td>
+                <td>{{ job.benefits }}</td>
+                <td>{{ job.is_active }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body_block %}
+
+<!-- title responsibilities requirements employment_type salary published_date benefits is_active -->

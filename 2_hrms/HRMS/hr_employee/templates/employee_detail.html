@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block head_block %} {% endblock %}
+{% block body_block %} 
+<div>
+    <div>
+        <h3>Employee&apos;s Details</h3>
+    </div>
+    <div>
+        {% if employee.picture == 'default_employee.png' %}
+        <p  style="color:tomato;">** No uploaded picture!</p>
+        {% endif %}
+        <img src="{{ employee.picture.url }}" width="100px" />
+
+        <ol>
+            <li><b>ID: </b>{{ employee.employee_id }}</li>
+            <li><b>Name: </b>{{ employee.first_name }} {{ employee.last_name }}</li>
+            <li><b>Email: </b>{{ employee.email }}</li>
+            <li><b>Phone: </b>{{ employee.phone_number }}</li>
+            <!-- department -->
+            <!-- <li><b>Designation: </b></li> -->
+            <li><b>Employment Status: </b>{{ employee.employment_status }}</li>
+            <!-- <li><b>Salary: </b>{{ employee.salary }}</li> -->
+            <li><b>Bank Account: </b>{{ employee.bank_account }}</li>
+            <li><b>Bank Name: </b>{{ employee.bank_name }}</li>
+            <li><b>Joining Date: </b>{{ employee.joining_date }}</li>
+            <li><b>Contract Type: </b>{{ employee.contract_type }}</li>
+            <li><b>ID number: </b>{{ employee.identity_number }}</li>
+            <li><b>Marital Status: </b>{{ employee.marital_status }}</li>
+            <li><b>DoB: </b>{{ employee.date_of_birth }}</li>
+            <li><b>Age: </b>{{ employee.age }}</li>
+            <li><b>Gender: </b>{{ employee.gender }}</li>
+            <li><b>Citizen: </b>{{ employee.citizen }}</li>
+        </ol>
+    </div>
+    <a href="javascript:history.back()" > Back </a>
+</div>
+{% endblock %}

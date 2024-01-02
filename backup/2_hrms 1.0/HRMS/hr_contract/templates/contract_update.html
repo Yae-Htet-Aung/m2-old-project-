@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<div>
+    <h3>Update Contract </h3>
+    <form method="POST" action="/contract/update/{{contract.id}}/" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        {{ form.as_p}}
+        
+        <button type="submit"> UPDATE </button>
+    </form>
+</div>
+{% endblock %}

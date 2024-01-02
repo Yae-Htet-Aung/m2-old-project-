@@ -1,0 +1,28 @@
+! ADDING EXTERNAL CSS   
+- add {% laod static %} in base.html
+- cannot add <!DOCTYPE html>
+- if <!DOCTYPE html> includes, CSS doesn't work!
+? if css doesn't work, check:
+    - STATIC_URL = '/static/'
+    - STATICFILES_DIRS = [
+        os.path.join(BASE_DIR,'static')
+    ]
+    in settings.py
+
+! CR PICTURES
+- settings.py   
+    - MEDIA_URL = '/media/'
+    - MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+- proj urls.py
+    - from django.conf import settings
+    - from django.conf.urls.static import static
+    - urlpatterns = [
+        ...
+    ]
+    - if settings.DEBUG:
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+{% if employee.picture == 'default' %}
+                    <img src="../../media/employee/_default.png" class="listImg">

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %} Resume {% endblock %}
+{% block body_block %}
+{% load static %}
+<style>
+    img {
+        height: 20px;
+        width: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+</style>
+<div>
+    <div>
+        <h2>Resume List</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Options</th>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Submission Date</th>
+                <th>Interview Location</th>
+                <th>Interview Feedback</th>
+                <th>Assessment Score</th>
+                <th>Assessment Feedback</th>
+                <th>Status</th>
+                <th>Offer Salary</th>
+                <!-- <th>Attachment</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for resume in all_resumes %}
+            <tr >
+                <td>
+                    <a href="{% url 'resume_detail' pk=resume.id %}">
+                        <img src="{% static 'info_ico.png' %}"/>
+                    </a>
+                    <a href="{% url 'resume_delete' pk=resume.id %}">
+                        <img src="{% static 'del_ico.png' %}"/>
+                    </a>
+                    <a href="{% url 'resume_update' pk=resume.id %}">
+                        <img src="{% static 'edit_ico.png' %}"/> 
+                    </a>
+                </td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ resume.name }}</td>
+                <td>{{ resume.submission_date }}</td>
+                <td>{{ resume.interview_location }}</td>
+                <td>{{ resume.interview_feedback }}</td>
+                <td>{{ resume.assessment_score }}</td>
+                <td>{{ resume.assessment_feedback }}</td>
+                <td>{{ resume.status }}</td>
+                <td>{{ resume.offer_salary }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- <div>
+        <p><b>Options:</b></p>
+        <p><img src="{% static 'info_ico.png' %}"/>Resume details </p>
+        <p><img src="{% static 'del_ico.png' %}"/>Delete resume </p>
+        <p><img src="{% static 'edit_ico.png' %}"/>Edit resume </p>
+    </div> -->
+</div>
+{% endblock body_block %}

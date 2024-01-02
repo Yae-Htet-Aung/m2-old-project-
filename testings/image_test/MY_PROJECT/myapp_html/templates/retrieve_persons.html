@@ -1,0 +1,20 @@
+<!-- myapp/templates/myapp/retrieve_persons.html -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Retrieve Persons</title>
+</head>
+
+<body>
+    <h2>Retrieve Persons</h2>
+    <ul>
+        {% for person in persons %}
+        <li>{{ person.name }} <img src="{{ person.image.url }}" width="100"></li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_person' %}">Add new</a>
+</body>
+
+</html>

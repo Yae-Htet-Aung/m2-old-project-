@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block title %} Resume {% endblock %}
+{% block body_block %}
+{% load static %}
+<style>
+    img {
+        height: 20px;
+        width: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+    .listImg {
+        height: 100px; width: 100px;
+    }
+</style>
+<div>
+    <div>
+        <h2>Resume List</h2>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th><b>Options</th>
+                <th><b>No.</th>
+                <th><b>Name</th>
+                <th><b>Date</th>
+                <th><b>Category</th>
+                <th><b>Reason</th>
+                <th><b>Claimed Amount</th>
+                <th><b>Approved Amount</th>
+                <th><b>Receipt Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in all_expenses %}
+            <tr >
+                <td>
+                    <a href="{% url 'expense_detail' pk=expense.id %}">
+                        <img src="{% static 'info_ico.png' %}"/>
+                    </a>
+                    <a href="{% url 'expense_delete' pk=expense.id %}">
+                        <img src="{% static 'del_ico.png' %}"/>
+                    </a>
+                    <a href="{% url 'expense_update' pk=expense.id %}">
+                        <img src="{% static 'edit_ico.png' %}"/>
+                    </a>
+                </td>
+                <td> {{ forloop.counter }} </td>
+                <td> {{ expense.name }} </td>
+                <td> {{ expense.date }} </td>
+                <td> {{ expense.category }} </td>
+                <td> {{ expense.reason }} </td>
+                <td> {{ expense.claimed_amount }} </td>
+                <td> {{ expense.approved_amount }} </td>
+                <td>
+                    {% if expense.receipt_image == 'default' %}
+                    <img src="../../media/default_expense.jpg" class="listImg">
+                    {% else %}
+                    <img src="{{ expense.receipt_image.url }}" class="listImg">
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- <div>
+        <p><b>Options:</b></p>
+        <p><img src="{% static 'info_ico.png' %}"/>Resume details </p>
+        <p><img src="{% static 'del_ico.png' %}"/>Delete expense </p>
+        <p><img src="{% static 'edit_ico.png' %}"/>Edit expense </p>
+    </div> -->
+</div>
+{% endblock body_block %}

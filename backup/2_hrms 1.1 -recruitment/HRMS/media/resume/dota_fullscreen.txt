@@ -1,0 +1,8 @@
+To fullscreen Dota 
+=> search "regedit" 
+	>>  HIKEY_CURRENT_USER 
+	>> SOFTWARE 
+	>> Blizzard Entertainment 
+	>> Warcraft III 
+	>> Video 
+	>> (edit resheight as 1080 *Hexadecimal and reswidth as 1320 *Hexadecimal )

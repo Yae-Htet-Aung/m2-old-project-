@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block head_block %} {% endblock %}
+{% block body_block %}
+<div>
+    <h3> Add New Contract </h3>
+    <form method="POST" action="/contract/add/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- <div>
+            {{ form.contract_id.label_tag }} {{ form.contract_id }}
+        </div>
+        
+        <div>
+            {{ form.contract_name.label_tag }} {{ form.contract_name }}
+        </div>
+        
+        <div>
+            {{ form.start_date.label_tag }} {{ form.start_date }}
+        </div>
+        
+        <div>
+            {{ form.end_date.label_tag }} {{ form.end_date }}
+        </div> -->
+        <!-- department, job_title -->
+        <!-- <div>
+            {{ form.contract_type.label_tag }} {{ form.contract_type }}
+        </div>
+
+
+
+        <div>
+            {{ form.contractor_name.label_tag }} {{ form.contractor_name }}
+        </div>
+
+        <div>
+            {{ form.sub_contractor_name.label_tag }} {{ form.sub_contractor_name }}
+        </div>
+
+        <div>
+            {{ form.basic_salary.label_tag }} {{ form.basic_salary }}
+        </div>
+
+        <div>
+            {{ form.salary.label_tag }} {{ form.salary }}
+        </div>
+
+        <div>
+            {{ form.allowed_annual_leave.label_tag }} {{ form.allowed_annual_leave }}
+        </div>
+
+
+
+        <div>
+            {{ form.value.label_tag }} {{ form.value }}
+        </div>
+
+        <div>
+            {{ form.status.label_tag }} {{ form.status }}
+        </div>
+
+        <div>
+            {{ form.terminated_date.label_tag }} {{ form.terminated_date }}
+        </div>
+
+        <div>
+            {{ form.terminated_reason.label_tag }} {{ form.terminated_reason }}
+        </div>
+
+        <div>
+            {{ form.note.label_tag }} {{ form.note }}
+        </div>
+
+        
+        
+        <div>
+            {{ form.created_date.label_tag }} {{ form.created_date }}
+        </div>
+        
+        <div>
+            {{ form.updated_date.label_tag }} {{ form.updated_date }}
+        </div>
+        
+        <div>
+            {{ form.attachment.label_tag }} {{ form.attachment }}
+        </div> -->
+        {{ form.as_p}}
+        
+        <button type="submit"> Save </button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %} Departments {% endblock %}
+{% block body_block %}
+{% load static %}
+<style>
+	img {
+		width: 20px;
+		height: 20px;
+	}
+
+	a {
+		text-decoration: none;
+	}
+</style>
+
+<div>
+	<div>
+		<h2> Departments </h2>
+	</div>
+	<table>
+		<thead>
+			<tr>
+				<th>Options</th>
+				<th>No.</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Total Employees</th>
+				<th>Status</th>
+				<th>Is Active</th>
+				<th>Ongoing Project</th>
+				<th>Project Deadline</th>
+				<th>Budget</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for department in departments %}
+			<tr >
+				<td>
+					<a href="/department/detail/{{department.id}}/">
+					<img src="{% static 'info_ico.png' %}"/>
+					</a>
+					<a href="/department/delete/{{department.id}}/">
+					<img src="{% static 'del_ico.png' %}"/>
+					</a>
+					<a href="/department/update/{{department.id}}/">
+					<img src="{% static 'edit_ico.png' %}"/>
+					</a>
+				</td>
+				<td>{{ forloop.counter }}</td>
+				<td>{{ department.name }}</td>
+				<td>{{ department.description }}</td>
+				<td>{{ department.total_employees }}</td>
+				<td>{{ department.status }}</td>
+				<td>{{ department.is_active }}</td>
+				<td>{{ department.project_name }}</td>
+				<td>{{ department.deadline }}</td>
+				<td>{{ department.budget }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endblock body_block %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% block title %} Contracts {% endblock %}
+{% block body_block %}
+{% load static %}
+<style>
+    .listImg {
+        width: 80px;
+        height: 80px;
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+    a {
+        text-decoration: none;
+    }
+</style>
+<div>
+    <div>
+        <h3> Contracts </h3>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Options</th>
+                <th>No.</th>
+                <th>Contract&apos;s Name</th>
+                <th>Contract&apos;s ID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Created Date</th>
+                <th>Status</th>
+                <th>Note</th>
+                <th>attachment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contract in contracts %}
+            <tr>
+                <td>
+                    <a href="/contract/detail/{{contract.id}}/">
+                        <img src="{% static 'info_ico.png' %}" class="icon" />
+                    </a>
+                    <a href="/contract/delete/{{contract.id}}/">
+                        <img src="{% static 'del_ico.png' %}" class="icon" />
+                    </a>
+                    <a href="/contract/update/{{contract.id}}/"> 
+                        <img src="{% static 'edit_ico.png' %}" class="icon" />
+                    </a>
+                </td>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ contract.contract_name }}</td>
+                <td>{{ contract.contract_id }}</td>
+                <td>{{ contract.start_date }}</td>
+                <td>{{ contract.end_date }}</td>
+                <td>{{ contract.created_date }}</td>
+                <td>{{ contract.status }}</td>
+                <td>{{ contract.note }}</td>
+                <td>
+                    {% if contract.attachment == 'default' %} 
+                        <img src="../../media/contract/_default.jpg" class="listImg">
+                    {% else %}
+                        <img src="{{ contract.attachment.url }}" class="listImg">
+                    {% endif %}
+                </td>
+                <!-- <td><img src="{{ contract.attachment.url }}" class="listImg"></td> -->
+                <!-- <td><img src="{{employee.picture.url}}" class="employeePicture"></td> -->
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock body_block %}

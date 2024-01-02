@@ -1,0 +1,23 @@
+Tags
+contract
+- subcontractor
+- employee
+
+employee
+- part time 
+- full time 
+- freelancer
+
+job
+- pending
+- close
+- open
+
+resume
+- final interview
+- first
+- second 
+
+Foreignkeys
+Employee
+- department, JobTitle
